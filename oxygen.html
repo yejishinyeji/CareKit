@@ -1,0 +1,1454 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0193)file:///C:/Users/Administrator/Downloads/%EC%96%91%EC%95%95%EA%B8%B0%20%EC%B9%98%EB%A3%8C%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%A0%9C%EA%B3%B5%EC%97%85%EC%86%8C%20%EC%A0%90%EA%B2%80%ED%91%9C.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>산소치료 서비스 제공업소 점검표</title>
+    <style>
+        :root {
+            --navy: #1f2a44;
+            --accent: #3457a6;
+            --accent-dark: #2a4585;
+            --accent-light: #eaf0fb;
+            --line: #4a5568;
+            --line-soft: #c7cedb;
+            --bg: #eef1f6;
+            --card: #ffffff;
+            --text: #2b2f38;
+            --muted: #6b7280;
+            --danger: #c0392b;
+            --danger-dark: #a5311f;
+            --ok: #1f8a5b;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+        }
+        body {
+            background: linear-gradient(180deg, #e9edf5 0%, #eef1f6 100%);
+            margin: 0;
+            padding: 24px 15px 60px;
+            color: var(--text);
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 30px 32px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(31, 42, 68, 0.09), 0 2px 6px rgba(31, 42, 68, 0.06);
+        }
+
+        /* ===== 상단 툴바 ===== */
+        .toolbar-wrap {
+            max-width: 1400px;
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: center;
+        }
+        .toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--card);
+            padding: 10px 10px;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(31, 42, 68, 0.10);
+        }
+        .tbtn {
+            border: none;
+            padding: 10px 20px;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 999px;
+            cursor: pointer;
+            color: #fff;
+            letter-spacing: 0.2px;
+            transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .tbtn:hover { transform: translateY(-1px); opacity: 0.94; }
+        .tbtn:active { transform: translateY(0); }
+        .tbtn-save, .tbtn-load, .tbtn-reset, .tbtn-pdf {
+            background: #eceef1;
+            color: #3a3f47;
+            border: 1px solid #d7dae0;
+        }
+        .tbtn .emoji {
+            font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Symbol', 'Twemoji Mozilla', sans-serif;
+            font-style: normal;
+            font-variant-emoji: emoji;
+            color: initial;
+            -webkit-text-fill-color: initial;
+            margin-right: 2px;
+        }
+
+        /* ===== 메인 테이블 레이아웃 ===== */
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 13px;
+            table-layout: fixed;
+        }
+        .top-layout-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid var(--line-soft);
+            padding: 6px 7px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .main-table > thead > tr > th {
+            border: 1px solid #000;
+        }
+        thead th {
+            background: linear-gradient(180deg, #8b93a0 0%, #6d7480 100%);
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            padding: 9px 6px;
+        }
+        .text-center {
+            text-align: center !important;
+        }
+        /* 항목/카테고리 라벨 셀 (기본사항, 기기사항 등) */
+        .main-table td[style*="font-weight:bold"] {
+            background: #eef0f2 !important;
+            color: #3a3f47;
+            border-color: var(--line-soft);
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            border: 1px solid #d6dbe4;
+            padding: 5px 7px;
+            font-size: 11px;
+            border-radius: 5px;
+            background: #fbfcfe;
+            color: var(--text);
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(52, 87, 166, 0.15);
+            background: #fff;
+        }
+        /* 확인사항 내부 컴팩트 밑줄 입력칸 스타일 */
+        .compact-underline {
+            width: 35px;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            border-radius: 0;
+            text-align: center;
+            padding: 0;
+            height: 16px;
+            font-size: 11px;
+            background: transparent;
+        }
+        .ox-input {
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            padding: 2px 0;
+            font-size: 10.5px;
+            border: 1px solid #e2e6ee;
+            border-radius: 3px;
+        }
+        textarea {
+            resize: vertical;
+            height: 40px;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+        .radio-label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 11px;
+            padding: 3px 10px;
+            border: 1px solid #d6dbe4;
+            border-radius: 999px;
+            color: var(--muted);
+            transition: all 0.12s ease;
+        }
+        .radio-label:has(input:checked) {
+            background: var(--accent);
+            border-color: var(--accent-dark);
+            color: #fff;
+        }
+        .radio-label input {
+            margin-right: 4px;
+        }
+
+        /* 내부 테이블 스타일 */
+        .inner-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+            table-layout: fixed;
+        }
+        .inner-table td, .inner-table th {
+            border: 1px solid #d6dbe4;
+            padding: 4px;
+            font-size: 12px;
+            vertical-align: top;
+        }
+        .inner-table th {
+            background: #f3f5f9;
+            color: var(--navy);
+        }
+
+        /* ⑤ 기능 확인용 컴팩트 스타일 */
+        .compact-inner-table {
+            width: 100%;
+            border: 1px solid #d6dbe4;border-collapse: collapse;
+            margin: 0;
+            table-layout: fixed;
+        }
+        .compact-inner-table th, .compact-inner-table td {
+            border: 1px solid #d6dbe4;
+            padding: 3px 3px;
+            font-size: 9.5px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        /* 서명 캔버스 디자인 */
+        .sig-canvas-small {
+            border: 1.5px dashed #a9b3c4;
+            border-radius: 6px;
+            background: #fbfcfe;
+            width: 100%;
+            height: 50px;
+            touch-action: none;
+        }
+        .sig-canvas-row {
+            border: 1.5px dashed #b7a6a6;
+            border-radius: 6px;
+            background: #fbfcfe;
+            width: 100%;
+            height: 40px;
+            touch-action: none;
+        }
+        .btn-clear-sm {
+            background: #f1f3f7;
+            color: var(--muted);
+            border: 1px solid #d6dbe4;
+            padding: 1px 6px;
+            font-size: 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            display: block;
+            margin: 3px auto 0 auto;
+            transition: background 0.12s ease;
+        }
+        .btn-clear-sm:hover { background: #e5e9f0; }
+
+        .action-bar {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-pdf {
+            background-color: var(--ok);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(31,138,91,0.2);
+        }
+
+        /* ===== 모달 ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 26, 41, 0.55);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            position: relative;
+            background: #fff;
+            border-radius: 14px;
+            padding: 30px 32px 22px;
+            min-width: 300px;
+            max-width: 90vw;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            animation: modal-pop 0.15s ease;
+        }
+        @keyframes modal-pop {
+            from { transform: scale(0.94); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            border: none;
+            background: none;
+            font-size: 18px;
+            color: var(--muted);
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-msg {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 6px 0 22px;
+            white-space: pre-line;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .modal-btn {
+            border: none;
+            padding: 9px 24px;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: opacity 0.12s ease;
+        }
+        .modal-btn:hover { opacity: 0.9; }
+        .modal-btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .modal-btn-secondary {
+            background: #eceff4;
+            color: var(--text);
+        }
+        #modal-reset .modal-btn-primary {
+    …</style>
+</head>
+<body>
+
+
+
+
+<div class="container">
+    <div style="display: flex;gap: 20px;margin-bottom: 30px;">
+        <table class="top-layout-table" style="width: 53%;">
+            <tbody><tr>
+                <td colspan="4" style="font-size: 18px; font-weight: bold; border: none; padding-left: 0; padding-bottom: 8px;">
+                    □ 산소치료 서비스 제공업소 점검표
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 15%;">업소명</th>
+                <td style="width: 35%;"><input type="text"></td>
+                <th style="width: 20%;">사업자등록번호</th>
+                <td style="width: 30%;"><input type="text"></td>
+            </tr>
+            <tr>
+                <th>점검일자</th>
+                <td><input type="text" id="todayDate"></td>
+                <th>업소관리번호</th>
+                <td><input type="text"></td>
+            </tr>
+        </tbody></table>
+
+        <table class="top-layout-table" style="width: 47%; text-align: center;">
+            <tbody><tr>
+                <th rowspan="3" style="width: 8%; writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 3px; padding: 4px;">점검 확인자</th>
+                <th style="width: 30%;">업소 대표자</th>
+                <th style="width: 30%;">업소 담당자</th>
+                <th style="width: 32%;">공단 담당자</th>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="성명" class="text-center" style="border:none; border-bottom:1px solid #ddd;"></td>
+                <td><input type="text" placeholder="성명" class="text-center" style="border:none; border-bottom:1px solid #ddd;"></td>
+                <td><input type="text" placeholder="성명" class="text-center" style="border:none; border-bottom:1px solid #ddd;"></td>
+            </tr>
+            <tr>
+                <td style="padding: 2px;">
+                    <canvas id="sig_top1" class="sig-canvas-small"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_top1')">지우기</button>
+                </td>
+                <td style="padding: 2px;">
+                    <canvas id="sig_top2" class="sig-canvas-small"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_top2')">지우기</button>
+                </td>
+                <td style="padding: 2px;">
+                    <canvas id="sig_top3" class="sig-canvas-small"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_top3')">지우기</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="main-table">
+        <thead>
+            <tr>
+                <th style="width: 6%;">점검항목</th>
+                <th style="width: 12%;">점검내용</th>
+                <th style="width: 28%;">세부내용</th>
+                <th style="width: 32%;">확인사항</th>
+                <th style="width: 12%;">점검결과</th>
+                <th style="width: 10%;">비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td rowspan="4" class="text-center" style="font-weight:bold; background-color:#fafafa;">기본사항</td>
+                <td>① 소재지 현황</td>
+                <td>본사 소재지:<br>
+                <input type="text"></td>
+                <td>전산의 업소주소 일치여부 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g1"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+            <td>② 영업소 현황</td>
+                <td>영업소 소재지<br>(총[ <input type="text" class="compact-underline" style="width:30px;"> ]개소)<br>
+                    <table class="inner-table">
+                        <tr>
+                            <th style="width: 25%;">지역</th>
+                            <th style="width: 75%;">주소</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="서울" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="강원" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="경기" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="인천" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="경기" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="대전" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="세종" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="대구" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="경북" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="부산" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="울산" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="경남" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="광주" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="전라" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="제주" class="text-center"></td>
+                            <td><input type="text"></td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td>
+                    <table class="inner-table">
+                    <tr>전산의 영업소 등록내역(영업소 개수, 주소) 일치여부 확인<br></tr><tr><br></tr>
+                    <tr>* 권역별 설치·운영기준<br>(영업소 3개소 이하는 소재지 중심으로 영업지역 제한)</tr>
+                        <tr>
+                            <th style="width: 30%;">권역</th>
+                            <th style="width: 70%;">지역</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">서울·경인권</th>
+                            <th style="width: 70%;">서울특별시, 인천광역시, 경기도</th>
+                        </tr>
+                         <tr>
+                            <th style="width: 30%;">강원권</th>
+                            <th style="width: 70%;">강원특별자치도</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">충남·충북권</th>
+                            <th style="width: 70%;">대전광역시, 충청남도, 충청북도</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">전남·전북권</th>
+                            <th style="width: 70%;">광주광역시, 전라남도, 전라북도, 제주도</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">경남권</th>
+                            <th style="width: 70%;">부산광역시, 울산광역시, 경상남도</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">경북권</th>
+                            <th style="width: 70%;">대구광역시, 경상북도</th>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">서울·경인권</th>
+                            <th style="width: 70%;">서울특별시, 인천광역시, 경기도</th>
+                        </tr>
+
+                    </table>
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g2"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <td rowspan="2">③ 등록증 확인</td>
+                <td rowspan="2">
+                    등록증 보유 및 기재사항 등 확인
+                </td>
+                <td>① 등록증 비치 여부 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g3_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g3_1"> 적정</label>
+                    </div>
+                </td>
+                <td rowspan="2">
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+                </td>
+            </tr>
+            <tr>
+                <td>② 등록증 기재사항 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g3_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g3_2"> 적정</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="15" class="text-center" style="font-weight:bold; background-color:#fafafa;">기기사항</td>
+                <td rowspan="6">④ 기기 확인</td>
+                <td rowspan="6">등록된 기기의 모델명, 제조년월 등 확인</td>
+                <td style="padding: 3px;" colspan="2">
+                    	전산의 제품목록 중 대여가능 기기 확인<br>
+(가정용·휴대 각 최소 1대, 한 가지만 있을 경우 최소 2대)<table class="inner-table" style="border:none;">
+                        <tbody><tr></tr>
+                        <tr>
+                            <td style="width: 60px; font-weight: bold; background-color: #f9f9f9;" class="text-center">기기 1 코드</td>
+                            <td><input type="text" placeholder="첫 번째 기기 코드 입력"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; background-color: #f9f9f9;" class="text-center">기기 2 코드</td>
+                            <td><input type="text" placeholder="두 번째 기기 코드 입력"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; background-color: #f9f9f9;" class="text-center">기기 3 코드</td>
+                            <td><input type="text" placeholder="세 번째 기기 코드 입력"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; background-color: #f9f9f9;" class="text-center">기기 4 코드</td>
+                            <td><input type="text" placeholder="네 번째 기기 코드 입력"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; background-color: #f9f9f9;" class="text-center">기기 5 코드</td>
+                            <td><input type="text" placeholder="다섯 번째 기기 코드 입력"></td>
+                        </tr>
+                    </tbody></table>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            <tr>
+                <td>① 제조라벨 부착 여부 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_1"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            <tr>
+                <td>② 모델명 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_2"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            <tr>
+                <td>③ 제조년월 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_3"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            <tr>
+                <td>④ 기기코드 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_4"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_4"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            <tr>
+                <td style="padding: 5px; line-height: 1.4;">
+                    ⑤ 전산의 제품목록 중 제조년월 기준 8년 초과(8년 1개월~) 된 노후기기 확인<br>
+                    총 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대, 
+                    사용 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대, 
+                    사용불가 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대<br>
+                    <span style="color:#666;">※8년 이하(~8년) 기기만 있는 경우 ‘적정’ 처리</span>
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_5"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_5"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <td rowspan="2">⑤ 기기 기능 확인</td>
+                <td rowspan="2">기기성능 기준에 의한 기능별 확인</td>
+                <td style="padding: 5px;">
+                    ① 성능검사 보유장비 확인<br>
+                    산소농도계 [ <input type="text" class="compact-underline" style="width:25px;"> ]<br>
+                    산소유량계 [ <input type="text" class="compact-underline" style="width:25px;"> ]<br>
+                    소비전력계 [ <input type="text" class="compact-underline" style="width:25px;"> ]<br>
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g4_5"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g4_5"> 적정</label>
+                    </div>
+                </td>
+                <td style="padding: 5px; font-size: 12px; line-height: 1.5;">
+                    수탁업체명<br>[ <input type="text" class="compact-underline" style="width:65px;"> ]<br>
+                    위탁증빙자<br>[ <input type="text" class="compact-underline" style="width:65px;"> ]
+                </td>
+            </tr>
+                <td style="padding: 0;">② 대여가능기기 성능확인 확인<br>(업체 담당자가 성능검사 수행, 공단 담당자 확인<br>
+                    <table class="compact-inner-table">
+                        <thead>
+                            <tr style="background-color: #f7f7f7;">
+                                <th rowspan="1" style="border-left: none; border-top: none; width: 25%;">구분</th>
+                                <th colspan="1" style="border-top: none;">기기1</th>
+                                <th colspan="1" style="border-top: none;">기기2</th>
+                                <th colspan="1" style="border-top: none;">기기3</th>
+                                <th colspan="1" style="border-top: none;">기기4</th>
+                                <th colspan="1" style="border-right: none; border-top: none;">기기5</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">산소농도* 2L/min</td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">유량 2L/min</td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">소음</td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">소비전력</td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; border-bottom: none; font-weight: bold; background-color:#fafafa; text-align: left;">경보기능</td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                                <td><input type="text" class="ox-input"></td>
+                            </tr>
+            </tbody>
+            <tr><span style="color:#666;">*90% 이상 농도 확인</span></tr>
+                    </table>
+                </td>
+                <td>
+                    <div class="radio-group" style="flex-direction: column; gap: 4px;">
+                        <label class="radio-label"><input type="radio" name="g5_1_main"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g5_1_main"> 적정</label>
+                    </div>
+                </td>
+                                <td style="padding: 5px; font-size: 10.5px; line-height: 1.5;">
+                    소음측정장비<br>
+                    소음측정기<br>[ <input type="text" class="compact-underline" style="width:65px;"> ]<br>
+                    소음측정APP<br>[ <input type="text" class="compact-underline" style="width:55px;"> ]
+                </td>
+            </tr>
+                       
+            <tr>
+                <td rowspan="3">⑥ 회수기기 성능검사 및 위생처리</td>
+                <td rowspan="3">기기 회수 후 위생처리와 성능검사실시 및 점검 기록 보유</td>
+                <td style="padding: 5px;">
+                    ① 위생처리 장비보유 확인<br>
+                    콤프레셔 [ <input type="text" class="compact-underline" style="width:30px;"> ]<br>
+                    의료용 소독제 [ <input type="text" class="compact-underline" style="width:30px;"> ]
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g6_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g6_1"> 적정</label>
+                    </div>
+                </td>
+                <td style="padding: 5px; font-size: 10.5px; line-height: 1.5;">
+                    수탁업체명<br>[ <input type="text" class="compact-underline" style="width:65px;"> ]<br>
+                    위탁증빙자<br>[ <input type="text" class="compact-underline" style="width:55px;"> ]
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 5px; line-height: 1.4;">
+                    ② 위생처리 확인<br>
+                    ❶ 업체 담당자가 산소발생기 개방 후 기기내부 먼지상태 확인[ <input type="text" class="compact-underline" style="width:25px;"> ]<br> 
+                    ❷ 흡입구 부분 먼지상태 확인 [ <input type="text" class="compact-underline" style="width:25px;"> ]<br><span style="color:#666;">※위탁업체는 ❷만 실시</span>
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g6_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g6_2"> 적정</label>
+                    </div>
+                </td>
+                <td style="padding: 5px; font-size: 10.5px; line-height: 1.5;">
+                    필터교체 주기<br>[ <input type="text" class="compact-underline" style="width:55px;"> ]<br>
+                    관리방법<br>[ <input type="text" class="compact-underline" style="width:65px;"> ]
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 5px;">
+                    ③ 대여기기별 성능점검표 확인<br><span style="color:#666;">※위탁업체의 경우 성능·위생 점검결과 서면 확인</span>
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g6_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g6_3"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row6_4" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row6_4')">지우기</button>
+                    <textarea style="margin-top:2px; height:35px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>⑦ 소모품 및 부속품 구비</td>
+                <td>기기에 들어가는 소모품 및 부속품 구비</td>
+                <td>소모품(마스크, 튜브 등) 부속품 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g7"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g7"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row6_4" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row6_4')">지우기</button>
+                    <textarea style="margin-top:2px; height:35px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="3">⑧ 부적합 기기 사용 여부</td>
+                <td rowspan="3">부적합 기기 폐기등록 및 처리결과 관련기록 보유</td>
+                <td colspan="2">전산의 제품목록 중 사용폐기 제품 확인 <br><br> 가장 최근 유효종료일 <input type="date" id="user-date"><br><br> 가장 최근 유효종료일에 사용폐기한 제품 수량[ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대</td>
+                   <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>① 처리방법 <br> 폐기 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대, 인계 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대, 기타 [ <input type="text" style="width:40px;" oninput="this.value = this.value.replace(/[^0-9.]/g,&#39;&#39;).replace(/(\..*)\./g, &#39;$1&#39;);" class="compact-underline"> ]대</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g8_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g8_2"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>② 처리결과기록 확인(처리결과 확인서류 등)</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g8_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g8_3"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+<tr>
+                <td rowspan="15" class="text-center" style="font-weight:bold; background-color:#fafafa;">서비스 현황</td>
+                <td rowspan="3">⑨ 환자관리카드 등 기기 점검 및 사용상태 기록 관리</td>
+                <td rowspan="3">정기적 기기 점검 및 기록문서 작성·관리</td>
+                <td>① 환자관리카드 등 기기점검 기록문서 구비 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_1"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>② 정기방문 기간(3,4개월)의 적정성 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_2"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="line-height: 1.6; padding: 6px 8px;">
+                    ③ 방문 점검 항목 기재여부 확인<br>
+                    소독 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    유량 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    산소농도 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    교체소모품 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    점검 결과 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    점검자·수진자확인 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]<br>
+                    대여기기 점검표 비치여부 [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_3"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+              
+            <tr>
+                <td rowspan="2">⑩ 기기소재 및 이력관리</td>
+                <td rowspan="2">기기소재 및 수리이력 등 기록관리 확인</td>
+                <td>① 기기대여 이력관리 기록 확인</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g10_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g10_1"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>② 기기별 이력관리 확인
+                    <table class="compact-inner-table">
+                        <thead>
+                            <tr style="background-color: #f7f7f7;">
+                            <th style="width: 60%;">구분</th>
+                            <th style="width: 20%;">기기1</th>
+                                <th style="border-right: none; border-top: none; width: 20%;">기기 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">기기 소재 및 이력관리</td>
+                                <td> [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                                <td style="border-right: none;">[ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">사용환자 현황</td>
+                                <td> [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                                <td style="border-right: none;">[ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">기기 이상 및 수리점검내역</td>
+                                <td> [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                                <td style="border-right: none;">[ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                            </tr>                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">기기 이력 사용자 고지</td>
+                                <td> [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                                <td style="border-right: none;">[ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                            </tr>
+                            <tr>
+                                <td style="border-left: none; font-weight: bold; background-color:#fafafa; text-align: left;">환자 사용상태 확인</td>
+                                <td> [ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                                <td style="border-right: none;">[ <input type="checkbox" class="compact-underline" style="width:25px;"> ]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+               </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g10_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g10_2"> 적정</label>
+                    </div>
+                </td>
+                 <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="3">⑪ 보관소 운영</td>
+                <td rowspan="3">기기 및 부속품(소모품) 보관 상태 파악</td>
+                <td>① 별도의 보관장소 확보</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g11_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g11_1"> 적정</label>
+                    </div>
+                </td>
+                <td rowspan="3" style="vertical-align: top; padding: 5px; line-height: 1.5;" colspan="2">
+                    [계도사항]<br>
+                    미흡 : 보완대상 아님<br>
+                    [보관상태]<br>
+                    선반 보관[ <input type="checkbox" style="width:25px; border:none; border-bottom:1px solid #333; text-align:center;"> ] <br>
+                    깔판 위 보관[ <input type="checkbox" style="width:25px; border:none; border-bottom:1px solid #333; text-align:center;"> ]  <br>
+                    기타[ <input type="text" style="width:40px; border:none; border-bottom:1px solid #333; text-align:center;"> ]
+                </td>
+            </tr>
+            <tr>
+                <td>② 임대기기 보관 상태</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g11_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g11_2"> 적정</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>③ 방서·방충설비, 소화설비</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g11_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g11_3"> 적정</label>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>⑫ 콜센터 운영</td>
+                <td>24시간 콜센터 운영 여부(자동응답시스템 불인정)<br>콜센터: <input type="text" style="width:80px;"></td>
+                <td> 24시간 콜센터 운영<br>
+                ① 점검 중 콜센터 운영[ <input type="text" style="width:80px; border:none; border-bottom:1px solid #333;"> ]<br>
+                ② 점검 전·후 콜센터 통화[ <input type="text" style="width:80px; border:none; border-bottom:1px solid #333;"> ]<br>
+                    ※ 휴대전화 등 착신 시 인정가능(기계음은 인정 불가)
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g12"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g12"> 적정</label>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="4">⑬ 기기 사용 및 안전교육(업무지침서 구비)</td>
+                <td rowspan="4">서비스 관련 업무지침서 구비 및 안전교육 실시</td>
+                <td>① 업무지침서 확인<br>(앞장만 촬영하여 전산에 첨부)</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_1"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_1"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>② 기기 사용설명서 확인<br>(앞장만 촬영하여 전산에 첨부)</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_2"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_2"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+            <td>③ 안전교육자료 확인<br>(앞장만 촬영하여 전산에 첨부)</td>
+             <td>
+                 <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_3"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_3"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>④ 교육실시 여부 확인<br>(수진자·보호자 확인 여부 확인)</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g9_4"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g9_4"> 적정</label>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td>⑭ 서류 보존</td>
+                <td>요양비 청구에 관한 서류 보관</td>
+                <td>처방전, 세금계산서, 현금영수증, 요양을 실시하였음을 증명하는 서류 등
+                </td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="g12"> 미흡</label>
+                        <label class="radio-label"><input type="radio" name="g12"> 적정</label>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <canvas id="sig_row2" class="sig-canvas-row"></canvas>
+                    <button class="btn-clear-sm" onclick="clearCanvas('sig_row2')">지우기</button>               
+                    <textarea style="margin-top:2px;" placeholder="특이사항"></textarea>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="position: fixed; top: 25px; right: 25px; display: flex; flex-direction: column; gap; 2px; z-index: 9999;">
+    <div class="toolbar">
+        <button class="tbtn tbtn-save" onclick="handleSave()"><span class="emoji">💾</span> 임시저장</button>
+        <button class="tbtn tbtn-load" onclick="handleLoadRequest()"><span class="emoji">📂</span> 불러오기</button>
+        <button class="tbtn tbtn-reset" onclick="handleResetRequest()"><span class="emoji">🗑️</span> 초기화</button>
+        <button class="tbtn tbtn-pdf" onclick="window.print()"><span class="emoji">🖨</span> PDF저장</button>
+</div><script>
+    function setTodayDate() {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const dateInput = document.getElementById('todayDate');
+        if (dateInput) {
+            dateInput.value = `${yyyy}. ${mm}. ${dd}.`;
+        }
+    }
+
+    function setupCanvas(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        
+        // 아이패드/아이폰/갤럭시 터치 스크롤 방지
+        canvas.style.touchAction = 'none';
+        
+        // 캔버스 크기 지정
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight || 40;
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // 좌표 계산 함수 (마우스, 터치, 애플펜슬, 스타일러스 펜 통합 대응)
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else if (e.changedTouches && e.changedTouches.length > 0) {
+                clientX = e.changedTouches[0].clientX;
+                clientY = e.changedTouches[0].clientY;
+            }
+
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            isDrawing = true;
+            const pos = getPos(e);
+            lastX = pos.x; 
+            lastY = pos.y;
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            if (e.cancelable) e.preventDefault(); // 스크롤 동작 차단
+            
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            lastX = pos.x; 
+            lastY = pos.y;
+        }
+
+        function stopDrawing() { 
+            isDrawing = false; 
+        }
+
+        // 1. Pointer Events (윈도우 터치, 최신 iOS 사파리, 안드로이드 크롬 크로스 브라우저 통합 표준)
+        if (window.PointerEvent) {
+            canvas.addEventListener('pointerdown', (e) => {
+                canvas.setPointerCapture(e.pointerId);
+                startDrawing(e);
+            });
+            canvas.addEventListener('pointermove', draw);
+            canvas.addEventListener('pointerup', (e) => {
+                canvas.releasePointerCapture(e.pointerId);
+                stopDrawing();
+            });
+            canvas.addEventListener('pointercancel', stopDrawing);
+        } else {
+            // 2. 마우스 이벤트 (PC 레거시 환경 대응)
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            // 3. 터치 이벤트 (iOS/안드로이드 구형 브라우저 대응)
+            canvas.addEventListener('touchstart', (e) => {
+                if (e.cancelable) e.preventDefault();
+                startDrawing(e);
+            }, { passive: false });
+
+            canvas.addEventListener('touchmove', (e) => {
+                if (e.cancelable) e.preventDefault();
+                draw(e);
+            }, { passive: false });
+
+            canvas.addEventListener('touchend', stopDrawing, { passive: false });
+            canvas.addEventListener('touchcancel', stopDrawing, { passive: false });
+        }
+    }
+
+    function clearCanvas(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+    /* ===== 임시저장 / 불러오기 / 초기화 / 팝업 처리 ===== */
+    const STORAGE_KEY = 'cpap_checklist_v1';
+
+    function openModal(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('active');
+    }
+    function closeModal(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+    }
+
+    function collectRadioGroups() {
+        const groups = {};
+        document.querySelectorAll('input[type="radio"]').forEach(el => {
+            if (!groups[el.name]) groups[el.name] = [];
+            groups[el.name].push(el);
+        });
+        return groups;
+    }
+
+    function handleSave() {
+        const data = { texts: [], textareas: [], radios: {}, canvases: {} };
+
+        document.querySelectorAll('input[type="text"]').forEach(el => data.texts.push(el.value));
+        document.querySelectorAll('textarea').forEach(el => data.textareas.push(el.value));
+
+        const groups = collectRadioGroups();
+        Object.keys(groups).forEach(name => {
+            data.radios[name] = groups[name].findIndex(r => r.checked);
+        });
+
+        document.querySelectorAll('canvas[id^="sig"]').forEach(c => {
+            try { data.canvases[c.id] = c.toDataURL(); } catch (e) { /* ignore */ }
+        });
+
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) {
+            console.error('저장 실패:', e);
+        }
+        openModal('modal-save');
+    }
+
+    function handleLoadRequest() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            openModal('modal-load');
+        } else {
+            openModal('modal-load-empty');
+        }
+    }
+
+    function confirmLoad() {
+        closeModal('modal-load');
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        let data;
+        try { data = JSON.parse(raw); } catch (e) { return; }
+
+        const textEls = document.querySelectorAll('input[type="text"]');
+        textEls.forEach((el, i) => {
+            if (data.texts && data.texts[i] !== undefined) el.value = data.texts[i];
+        });
+
+        const taEls = document.querySelectorAll('textarea');
+        taEls.forEach((el, i) => {
+            if (data.textareas && data.textareas[i] !== undefined) el.value = data.textareas[i];
+        });
+
+        const groups = collectRadioGroups();
+        Object.keys(groups).forEach(name => {
+            groups[name].forEach(r => r.checked = false);
+            const idx = data.radios ? data.radios[name] : undefined;
+            if (idx !== undefined && idx > -1 && groups[name][idx]) {
+                groups[name][idx].checked = true;
+            }
+        });
+
+        if (data.canvases) {
+            Object.keys(data.canvases).forEach(id => {
+                const canvas = document.getElementById(id);
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                img.onload = function () {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                };
+                img.src = data.canvases[id];
+            });
+        }
+    }
+
+    function handleResetRequest() {
+        openModal('modal-reset');
+    }
+
+    function confirmReset() {
+        closeModal('modal-reset');
+        document.querySelectorAll('input[type="text"]').forEach(el => el.value = '');
+        document.querySelectorAll('textarea').forEach(el => el.value = '');
+        document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+        document.querySelectorAll('canvas[id^="sig"]').forEach(c => {
+            const ctx = c.getContext('2d');
+            ctx.clearRect(0, 0, c.width, c.height);
+        });
+        setTodayDate();
+    }
+
+
+
+    window.onload = function() {
+        setTodayDate();
+        setupCanvas('sig_top1'); 
+        setupCanvas('sig_top2'); 
+        setupCanvas('sig_top3');
+        
+        const canvasIds = [
+            'sig_row1', 'sig_row2', 'sig_row3',
+            'sig_row4_0', 'sig_row4_1', 'sig_row4_2', 'sig_row4_3', 'sig_row4_4', 'sig_row4_5',
+            'sig_row5_1', 'sig_row5_2',
+            'sig_row6_4',
+            'sig_row7', 
+            'sig_row8_1', 'sig_row8_2', 'sig_row8_3',
+            'sig_row9_1', 'sig_row9_2', 'sig_row9_3', 'sig_row9_4', 
+            'sig_row10_1', 'sig_row10_2', 'sig_row12', 'sig_row13', 'sig_row14'
+        ];
+        
+        canvasIds.forEach(id => setupCanvas(id));
+    };
+</script>
+
+
+<div class="modal-overlay" id="modal-save">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal(&#39;modal-save&#39;)">×</button>
+        <p class="modal-msg">임시저장 되었습니다</p>
+        <div class="modal-actions">
+            <button class="modal-btn modal-btn-primary" onclick="closeModal(&#39;modal-save&#39;)">확인</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-load">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal(&#39;modal-load&#39;)">×</button>
+        <p class="modal-msg">저장된 점검표가 있습니다.<br>불러오시겠습니까?</p>
+        <div class="modal-actions">
+            <button class="modal-btn modal-btn-secondary" onclick="closeModal(&#39;modal-load&#39;)">아니오</button>
+            <button class="modal-btn modal-btn-primary" onclick="confirmLoad()">예</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-load-empty">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal(&#39;modal-load-empty&#39;)">×</button>
+        <p class="modal-msg">저장된 점검표가 없습니다</p>
+        <div class="modal-actions">
+            <button class="modal-btn modal-btn-primary" onclick="closeModal(&#39;modal-load-empty&#39;)">확인</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-reset">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal(&#39;modal-reset&#39;)">×</button>
+        <p class="modal-msg">정말 초기화하시겠습니까?</p>
+        <div class="modal-actions">
+            <button class="modal-btn modal-btn-secondary" onclick="closeModal(&#39;modal-reset&#39;)">취소</button>
+            <button class="modal-btn modal-btn-primary" onclick="confirmReset()">확인</button>
+        </div>
+    </div>
+</div>
+
+
+</body></html>
